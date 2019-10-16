@@ -58,21 +58,40 @@ const runners = [
 // ==== Challenge 1: Use .forEach() ====
 // The event director needs both the first and last names of each runner for their running bibs. Combine both the first and last names and populate a new array called `fullNames`. This array will contain just strings.
 let fullNames = [];
+
+// itterates over the array and returns the first and last names from each person.
+runners.forEach(function(names){
+  return fullNames.push(`${names.first_name} ${names.last_name}`);
+});
+
 console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
-let firstNamesAllCaps = [];
+// let firstNamesAllCaps = [];
+
+let firstNamesAllCaps = runners.map(function(name) {
+  return name.first_name.toUpperCase();
+});
+
 console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
-let runnersLargeSizeShirt = [];
+
+let runnersLargeSizeShirt = runners.filter(function(value){
+  return value.shirt_size === 'L';
+})
+
 console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
-let ticketPriceTotal = 0;
+
+let ticketPriceTotal = runners.reduce(function(accumulator, donationTotal) {
+  return accumulator + donationTotal.donation;
+}, 0)
+
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
@@ -80,6 +99,28 @@ console.log(ticketPriceTotal);
 
 // Problem 1
 
+// return the id and last name of the perosn
+
+let idAndName = runners.map(function(value) {
+  return `${value.id} ${value.last_name}`;
+});
+
+console.log(idAndName);
+
 // Problem 2
 
+// return all companies as lowercase
+
+let companies = runners.map(value => value.company_name.toLowerCase());
+
+console.log(companies);
+
 // Problem 3
+
+// grab all the companies and sort in alphabetical order
+
+let companiesAlpha = [];
+
+runners.forEach(names => companiesAlpha.push(names.company_name));
+
+console.log(companiesAlpha.sort());

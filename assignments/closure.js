@@ -4,6 +4,21 @@
 // that manipulates variables defined in the outer scope.
 // The outer scope can be a parent function, or the top level of the script.
 
+function parent(parentsName){
+  let hairColor = 'blonde'
+  console.log(`Hello my name is ${parentsName}.`);
+
+  function child(childsName){
+    console.log(`Hello my name is ${childsName} and my mother is ${parentsName}.`);
+
+    function grandChild(gChildName){
+      console.log(`Hello my name is ${gChildName}, my parent is ${childsName} and my grandparents name is ${parentsName}. I have ${hairColor} hair.`);
+    } // closes the grandchild
+    grandChild('Ann');
+  } // closes the child
+   child('Joe');
+} // closes the parent 
+parent('Jane');
 
 /* STRETCH PROBLEMS, Do not attempt until you have completed all previous tasks for today's project files */
 
